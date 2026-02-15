@@ -11,7 +11,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Trust ngrok / reverse proxy headers (X-Forwarded-Host, X-Forwarded-Proto, etc.)
+        $middleware->trustProxies(at: '*');
+
+          // Exclude n8n callback from CSRF protection
+    $middleware->validateCsrfTokens(except: [
+        'agent/callback',
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
