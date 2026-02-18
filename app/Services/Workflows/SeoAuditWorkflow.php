@@ -17,12 +17,14 @@ class SeoAuditWorkflow
             'status' => 'processing',
         ]);
 
-        $response = Http::timeout(30)->post(config('n8n.audit_webhook_url'), [
+        $webhookUrl = rtrim(config('n8n.base_url'), '/') . '/webhook/small-audit';
+
+        $response = Http::timeout(30)->post($webhookUrl, [
             'job_id'   => $jobId,
             'url'      => $audit->url,
             'language' => $audit->language?->code ?? null,
             'location' => $audit->location?->name ?? null,
-            'callback_url' => route('callbacks.audit'),
+            'callback_url' => route('callbacks.seo_audit'),
         ]);
 
         if (!$response->successful()) {
