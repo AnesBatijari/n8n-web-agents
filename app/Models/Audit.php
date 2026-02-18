@@ -18,4 +18,10 @@ class Audit extends Model
         'started_at' => 'datetime',
         'finished_at' => 'datetime',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
+
 }

@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AgentController;
+use App\Http\Controllers\Workflows\SeoAuditController;
+use App\Http\Controllers\Workflows\PotenzialController;
+use App\Http\Controllers\Callbacks\SeoAuditCallbackController;
+use App\Http\Controllers\Callbacks\PotenzialCallbackController;
 
 
 Route::get('/', function () {
@@ -20,13 +23,19 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/agent', [AgentController::class, 'index'])->name('agent.index');
-    Route::post('/agent/send', [AgentController::class, 'send'])->name('agent.send');
+    // SEO Audits UI
+    Route::get('/seo-audits/create', [SeoAuditController::class, 'create'])->name('seo.create');
+    Route::post('/seo-audits', [SeoAuditController::class, 'store'])->name('seo.store');
+    Route::get('/seo-audits', [SeoAuditController::class, 'index'])->name('seo.index');
 
-    Route::get('/audits', [AgentController::class, 'audits'])->name('audits.index');
+    // Potenzial UI
+    Route::get('/potenzial/create', [PotenzialController::class, 'create'])->name('potenzial.create');
+    Route::post('/potenzial', [PotenzialController::class, 'store'])->name('potenzial.store');
+    Route::get('/potenzial', [PotenzialController::class, 'index'])->name('potenzial.index');
 });
 
-// keep this public (called by n8n)
-Route::post('/agent/callback', [AgentController::class, 'callback'])->name('agent.callback');
+// Callbacks (PUBLIC)
+Route::post('/callbacks/seo-audit', [SeoAuditCallbackController::class, 'handle'])->name('callbacks.seo_audit');
+Route::post('/callbacks/potenzial', [PotenzialCallbackController::class, 'handle'])->name('callbacks.potenzial');
 
 require __DIR__.'/auth.php';

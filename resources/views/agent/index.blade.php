@@ -10,11 +10,16 @@
             {{ session('success') }}
         </div>
     @endif
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('SEO Audit') }}
+        </h2>
+    </x-slot>
 
     <div class="max-w-2xl mx-auto p-6 space-y-6">
         <h1 class="text-2xl font-bold">SEO Audit</h1>
 
-        <form method="POST" action="{{ route('agent.send') }}" class="space-y-4">
+        <form method="POST" action="{{ route('seo.store') }}" class="space-y-4">
             @csrf
 
             <div>
@@ -45,7 +50,7 @@
                                 <div class="text-sm text-gray-500">{{ $a->status }} •
                                     {{ $a->created_at->diffForHumans() }}</div>
                             </div>
-                            <a class="text-blue-600 underline" href="{{ route('audits.index') }}">Open</a>
+                            <a class="text-blue-600 underline" href="{{ route('seo.index') }}">Open</a>
                         </div>
                     @endforeach
                 </div>

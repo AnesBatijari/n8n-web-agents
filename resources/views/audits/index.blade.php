@@ -9,7 +9,7 @@
 
         <div class="flex items-center justify-between">
             <h2 class="text-xl font-bold">Audits</h2>
-            <a href="{{ route('agent.index') }}" class="text-blue-600 underline">New audit</a>
+            <a href="{{ route('seo.create') }}" class="text-blue-600 underline">New audit</a>
         </div>
 
         <div class="border rounded overflow-hidden">
