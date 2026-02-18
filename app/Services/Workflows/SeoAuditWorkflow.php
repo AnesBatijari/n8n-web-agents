@@ -1,17 +1,37 @@
 <?php
 
-namespace App\Services\N8n;
+namespace App\Services\Workflows;
 
-use Illuminate\Http\Client\Response;
+use App\Models\Audit;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
-class N8nClient
+class SeoAuditWorkflow
 {
-    public function post(string $path, array $payload, int $timeout = 30): Response
+    public function start(Audit $audit): Audit
     {
-        $base = rtrim(config('n8n.base_url'), '/');
-        $url  = $base . '/' . ltrim($path, '/');
+        $jobId = (string) Str::uuid();
 
-        return Http::timeout($timeout)->post($url, $payload);
+        $audit->update([
+            'job_id' => $jobId,
+            'status' => 'processing',
+        ]);
+
+        $response = Http::timeout(30)->post(config('n8n.audit_webhook_url'), [
+            'job_id'   => $jobId,
+            'url'      => $audit->url,
+            'language' => $audit->language?->code ?? null,
+            'location' => $audit->location?->name ?? null,
+            'callback_url' => route('callbacks.audit'),
+        ]);
+
+        if (!$response->successful()) {
+            $audit->update([
+                'status' => 'failed',
+                'error_message' => 'Failed to start n8n workflow',
+            ]);
+        }
+
+        return $audit;
     }
 }
