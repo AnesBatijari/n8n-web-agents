@@ -67,7 +67,10 @@ class AgentController extends Controller
                 'error_message' => 'Failed to start workflow: ' . $response->status(),
             ]);
 
-            return back()->with('error', 'Failed to start workflow: ' . $response->status());
+            return back()->with('error',
+    'Failed: ' . $response->status() . ' - ' . $response->body()
+);
+
         }
 
         // mark as running (optional)
