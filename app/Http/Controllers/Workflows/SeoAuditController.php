@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Workflows;
 
 use App\Http\Controllers\Controller;
 use App\Models\Audit;
-use App\Services\N8n\Workflows\SeoAuditWorkflow;
+use App\Services\Workflows\SeoAuditWorkflow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
