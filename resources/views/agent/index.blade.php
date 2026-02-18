@@ -12,14 +12,15 @@
     @endif
 
     <div class="max-w-2xl mx-auto p-6 space-y-6">
+        <h1 class="text-2xl font-bold">SEO Audit</h1>
 
         <form method="POST" action="{{ route('agent.send') }}" class="space-y-4">
             @csrf
 
             <div>
                 <label class="block font-medium mb-1">Client Name</label>
-                <input type="text" name="client_name" value="{{ old('client_name') }}" class="w-full border rounded p-2"
-                    required>
+                <input type="text" name="client_name" value="{{ old('client_name') }}"
+                    class="w-full border rounded p-2" required>
             </div>
 
             <div>
@@ -29,7 +30,7 @@
             </div>
 
             <x-primary-button type="submit">
-                Generate Report
+                Generate Audit
             </x-primary-button>
         </form>
 
