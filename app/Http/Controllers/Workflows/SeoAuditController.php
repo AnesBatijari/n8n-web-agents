@@ -39,7 +39,7 @@ class SeoAuditController extends Controller
         ]);
 
         try {
-            $workflow->trigger($audit);
+            $workflow->start($audit);
             $audit->update(['status' => 'running']);
         } catch (\Throwable $e) {
             $audit->update([
