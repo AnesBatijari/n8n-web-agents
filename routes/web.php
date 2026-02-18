@@ -34,8 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/potenzial', [PotenzialController::class, 'index'])->name('potenzial.index');
 });
 
-// Callbacks (PUBLIC)
-Route::post('/callbacks/seo-audit', [SeoAuditCallbackController::class, 'handle'])->name('callbacks.seo_audit');
-Route::post('/callbacks/potenzial', [PotenzialCallbackController::class, 'handle'])->name('callbacks.potenzial');
+// // Callbacks (PUBLIC)
+// Route::post('/callbacks/seo-audit', [SeoAuditCallbackController::class, 'handle'])->name('callbacks.seo_audit');
+// Route::post('/callbacks/potenzial', [PotenzialCallbackController::class, 'handle'])->name('callbacks.potenzial');
 
 require __DIR__.'/auth.php';
