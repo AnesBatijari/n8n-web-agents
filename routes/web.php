@@ -19,7 +19,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/agent', [AgentController::class, 'index'])->name('agent.index');
     Route::post('/agent/send', [AgentController::class, 'send'])->name('agent.send');
