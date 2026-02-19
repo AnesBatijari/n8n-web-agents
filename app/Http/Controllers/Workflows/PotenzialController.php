@@ -30,8 +30,8 @@ class PotenzialController extends Controller
         $data = $request->validate([
             'url' => ['required', 'url', 'max:2048'],
             'client_name' => ['required', 'string', 'max:255'],
-            'location_id' => ['required', 'exists:locations,id'],
-            'language_id' => ['required', 'exists:languages,id'],
+            'location' => ['required', 'exists:locations,id'],
+            'language' => ['required', 'exists:languages,id'],
             'keywords' => ['required', 'string'],
         ]);
 
