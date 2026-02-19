@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('url');
             $table->string('location')->nullable();   // e.g. "Wien, AT"
             $table->string('language', 10)->nullable(); // e.g. "de", "en"
-            $table->json('keywords')->nullable();     // store array of keywords
+            $table->text('keywords')->nullable();     // store array of keywords
 
             // Outputs (adjust later)
             $table->string('file')->nullable();
