@@ -16,7 +16,14 @@ class Potenzial extends Model
         'job_id',
         'status',
         'error_message',
-        'file_potenzial',
+        'file',
+        'started_at',
+        'finished_at',
+    ];
+
+    protected $casts = [
+        'started_at' => 'datetime',
+        'finished_at' => 'datetime',
     ];
 
     public function language()

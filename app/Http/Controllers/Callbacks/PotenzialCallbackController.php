@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Callbacks;
 
 use App\Http\Controllers\Controller;
-use App\Models\Potenzial; // prilagodi ako ti se model zove drugačije
+use App\Models\Potenzial;
 use Illuminate\Http\Request;
 
 class PotenzialCallbackController extends Controller
@@ -17,17 +17,9 @@ class PotenzialCallbackController extends Controller
 
         $data = $request->validate([
             'job_id'        => ['required', 'string'],
-
-            // fajlovi / outputi (prilagodi šta n8n vraća)
-            'fileEnglish'   => ['nullable', 'string'],
-            'fileGerman'    => ['nullable', 'string'],
-
-            // status info
+            'file'          => ['nullable', 'string'],
             'status'        => ['nullable', 'string'],
             'error'         => ['nullable', 'string'],
-
-            // opciono: dodatni payload ako želiš sačuvati raw rezultat
-            'result'        => ['nullable'], // može biti array/string
         ]);
 
         $potenzial = Potenzial::where('job_id', $data['job_id'])->first();
@@ -37,14 +29,11 @@ class PotenzialCallbackController extends Controller
         }
 
         $potenzial->update([
-            'file_english'  => $data['fileEnglish'] ?? null,
-            'file_german'   => $data['fileGerman'] ?? null,
+            'file'          => $data['file'] ?? null,
             'status'        => $data['status'] ?? 'done',
             'error_message' => $data['error'] ?? null,
             'finished_at'   => now(),
 
-            // ako imaš kolonu npr. result_json (JSON) ili response_payload:
-            // 'result_json' => $data['result'] ?? null,
         ]);
 
         return response()->json(['ok' => true]);
