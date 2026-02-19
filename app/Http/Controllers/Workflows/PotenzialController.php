@@ -27,7 +27,7 @@ class PotenzialController extends Controller
 
     public function store(Request $request)
     {
-             dd($request->all());
+
         $data = $request->validate([
             'url' => ['required', 'url', 'max:2048'],
             'client_name' => ['required', 'string', 'max:255'],

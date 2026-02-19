@@ -32,7 +32,8 @@
                 <select id="location_id" name="location_id" class="w-full rounded border px-3 py-2" required>
                     <option value="">Select location...</option>
                     @foreach ($locations as $location)
-                        <option value="{{ $location->id }}" {{ old('location_id') == $location->id ? 'selected' : '' }}>
+                        <option value="{{ $location->location_name }}"
+                            {{ old('location_id') == $location->id ? 'selected' : '' }}>
                             {{ $location->title ?? ($location->location_name ?? $location->id) }}
                         </option>
                     @endforeach
@@ -44,7 +45,8 @@
                 <select id="language_id" name="language_id" class="w-full rounded border px-3 py-2" required>
                     <option value="">Select language...</option>
                     @foreach ($languages as $language)
-                        <option value="{{ $language->id }}" {{ old('language_id') == $language->id ? 'selected' : '' }}>
+                        <option value="{{ $language->language_name }}"
+                            {{ old('language_id') == $language->id ? 'selected' : '' }}>
                             {{ $language->title ?? ($language->language_name ?? $language->id) }}
                         </option>
                     @endforeach
