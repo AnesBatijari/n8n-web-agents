@@ -8,6 +8,7 @@ class Potenzial extends Model
 {
     protected $fillable = [
         'client_name',
+        'user_id',
         'url',
         'language',
         'location',

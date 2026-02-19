@@ -6,14 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Language;
 use App\Models\Location;
 use App\Models\Potenzial;
+use App\Services\Workflows\PotenzialWorkflow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PotenzialController extends Controller
 {
-
     public function index()
     {
-        $potenzials = Potenzial::latest()->paginate(15);
+        $potenzials = Potenzial::where('user_id', auth()->id())
+            ->latest()
+            ->paginate(15);
+
         return view('potenzial.view', compact('potenzials'));
     }
 
@@ -25,9 +29,8 @@ class PotenzialController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, PotenzialWorkflow $workflow)
     {
-
         $data = $request->validate([
             'url' => ['required', 'url', 'max:2048'],
             'client_name' => ['required', 'string', 'max:255'],
@@ -36,10 +39,31 @@ class PotenzialController extends Controller
             'keywords' => ['required', 'string'],
         ]);
 
+        $potenzial = Potenzial::create([
+            'user_id' => auth()->id(),
+            'job_id' => (string) Str::uuid(),
+            'client_name' => $data['client_name'],
+            'url' => $data['url'],
+            'location' => $data['location_id'], // name
+            'language' => $data['language_id'], // name
+            'keywords' => $data['keywords'],
+            'status' => 'queued',
+            'started_at' => now(),
+        ]);
 
+        try {
+            $workflow->start($potenzial);
+            $potenzial->update(['status' => 'running']);
+        } catch (\Throwable $e) {
+            $potenzial->update([
+                'status' => 'failed',
+                'error_message' => $e->getMessage(),
+            ]);
 
-        Potenzial::create($data);
+            return back()->with('error', 'Failed to start workflow: ' . $e->getMessage());
+        }
 
-        return redirect()->route('potenzial.index')->with('success', 'Potenzial workflow kreiran.');
+        return redirect()->route('potenzial.index')
+            ->with('success', 'Potenzial submitted. You’ll see the report link here once ready.');
     }
 }
