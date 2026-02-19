@@ -37,8 +37,8 @@
                             <td class="p-3">{{ $p->status }}</td>
 
                             <td class="p-3">
-                                @if ($p->file_potenzial)
-                                    <a href="{{ $p->file_potenzial }}" target="_blank" class="text-blue-600 underline">
+                                @if ($p->file)
+                                    <a href="{{ $p->file }}" target="_blank" class="text-blue-600 underline">
                                         Open
                                     </a>
                                 @else
