@@ -24,8 +24,8 @@ class PotenzialWorkflow
             'job_id'       => $jobId,
             'url'          => $potenzial->url,
             'client_name'  => $potenzial->client_name,
-            'language'     => $potenzial->language?->code ?? null,
-            'location'     => $potenzial->location?->name ?? null,
+            'language'     => $potenzial->language,
+            'location'     => $potenzial->location,
 
             // adjust field name depending on your DB column
             'keywords'     => $potenzial->keywords ?? null,
