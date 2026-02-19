@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class PotenzialController extends Controller
 {
+
+    public function index()
+    {
+        $potenzials = Potenzial::latest()->paginate(15);
+        return view('potenzial.view', compact('potenzials'));
+    }
+
     public function create()
     {
         return view('potenzial.create', [
