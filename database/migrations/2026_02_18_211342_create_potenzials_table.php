@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('location')->nullable();   // e.g. "Wien, AT"
             $table->string('language', 10)->nullable(); // e.g. "de", "en"
             $table->text('keywords')->nullable();     // store array of keywords
+            $table->text('client_comment')->nullable(); // optional comment from client
 
             // Outputs (adjust later)
             $table->string('file')->nullable();

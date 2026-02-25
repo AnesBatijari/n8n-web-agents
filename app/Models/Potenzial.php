@@ -13,6 +13,7 @@ class Potenzial extends Model
         'language',
         'location',
         'keywords',
+        'client_comment',
         'job_id',
         'status',
         'error_message',

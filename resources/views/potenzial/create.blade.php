@@ -59,6 +59,13 @@
                     required>{{ old('keywords') }}</textarea>
             </div>
 
+            <div>
+                <label class="block text-sm font-medium mb-1">Client Comment</label>
+                <textarea name="client_comment" rows="4" class="w-full rounded border px-3 py-2" placeholder="Additional comments from the client">
+                    {{ old('client_comment') }}
+                </textarea>
+            </div>
+
             <div class="pt-2">
                 <button type="submit" class="rounded px-4 py-2">Create Potencial Anlyse</button>
             </div>

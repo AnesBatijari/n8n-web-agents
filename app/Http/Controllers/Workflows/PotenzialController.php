@@ -37,6 +37,7 @@ class PotenzialController extends Controller
             'location_id' => ['required', 'string'],
             'language_id' => ['required', 'string'],
             'keywords' => ['required', 'string'],
+            'client_comment' => ['nullable', 'string'],
         ]);
 
         $potenzial = Potenzial::create([
@@ -47,6 +48,7 @@ class PotenzialController extends Controller
             'location' => $data['location_id'], // name
             'language' => $data['language_id'], // name
             'keywords' => $data['keywords'],
+            'client_comment' => $data['client_comment'] ?? null,
             'status' => 'queued',
             'started_at' => now(),
         ]);

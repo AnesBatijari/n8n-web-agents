@@ -26,9 +26,8 @@ class PotenzialWorkflow
             'client_name'  => $potenzial->client_name,
             'language'     => $potenzial->language,
             'location'     => $potenzial->location,
-
-            // adjust field name depending on your DB column
             'keywords'     => $potenzial->keywords ?? null,
+            'client_comment' => $potenzial->client_comment ?? null,
 
             'callback_url' => route('callbacks.potenzial'),
         ]);
