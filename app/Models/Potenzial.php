@@ -15,6 +15,7 @@ class Potenzial extends Model
         'keywords',
         'client_comment',
         'job_id',
+        'execution_id',
         'status',
         'error_message',
         'file',
