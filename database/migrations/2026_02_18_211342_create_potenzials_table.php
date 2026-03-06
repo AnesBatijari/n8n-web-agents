@@ -12,6 +12,7 @@ return new class extends Migration {
 
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->uuid('job_id')->unique();
+            $table->text('execution_id')->nullable()->index();
 
             // Inputs
             $table->string('client_name');

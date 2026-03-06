@@ -16,24 +16,34 @@ class PotenzialCallbackController extends Controller
         }
 
         $data = $request->validate([
-            'job_id'        => ['required', 'string'],
+            'job_id'        => ['nullable', 'string'],
+            'execution_id'  => ['nullable', 'string'],
             'file'          => ['nullable', 'string'],
             'status'        => ['nullable', 'string'],
             'error'         => ['nullable', 'string'],
+            'message'       => ['nullable', 'string'],
         ]);
 
-        $potenzial = Potenzial::where('job_id', $data['job_id'])->first();
+        $potenzial = null;
+
+        if (!empty($data['job_id'])) {
+            $potenzial = Potenzial::where('job_id', $data['job_id'])->first();
+        }
+
+        if (!$potenzial && !empty($data['execution_id'])) {
+            $potenzial = Potenzial::where('execution_id', $data['execution_id'])->first();
+        }
 
         if (!$potenzial) {
-            return response()->json(['ok' => true, 'message' => 'Unknown job_id']);
+            return response()->json(['ok' => true, 'message' => 'Unknown job']);
         }
 
         $potenzial->update([
-            'file'          => $data['file'] ?? null,
-            'status'        => $data['status'] ?? 'done',
-            'error_message' => $data['error'] ?? null,
-            'finished_at'   => now(),
-
+            'execution_id'  => $data['execution_id'] ?? $potenzial->execution_id,
+            'file'          => $data['file'] ?? $potenzial->file,
+            'status'        => $data['status'] ?? $potenzial->status,
+            'error_message' => $data['error'] ?? $data['message'] ?? $potenzial->error_message,
+            'finished_at'   => in_array($data['status'] ?? '', ['done', 'failed']) ? now() : $potenzial->finished_at,
         ]);
 
         return response()->json(['ok' => true]);
