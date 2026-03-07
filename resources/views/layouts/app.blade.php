@@ -143,8 +143,14 @@
 
                         <a wire:navigate href="{{ route('potenzial.index') }}"
                             class="block px-2 py-1.5 rounded-md text-sm font-normal text-gray-700 hover:bg-gray-50
-                          {{ request()->routeIs('potenzial.index') ? 'text-[var(--brand)]' : '' }}">
+                            {{ request()->routeIs('potenzial.index') ? 'text-[var(--brand)]' : '' }}">
                             - View
+                        </a>
+
+                        <a wire:navigate href="{{ route('potenzial.settings.edit') }}"
+                            class="block px-2 py-1.5 rounded-md text-sm font-normal text-gray-700 hover:bg-gray-50
+                            {{ request()->routeIs('potenzial.settings.*') ? 'text-[var(--brand)]' : '' }}">
+                            - Settings
                         </a>
                     </div>
                 </li>

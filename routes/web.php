@@ -6,6 +6,7 @@ use App\Http\Controllers\Workflows\SeoAuditController;
 use App\Http\Controllers\Workflows\PotenzialController;
 use App\Http\Controllers\Callbacks\SeoAuditCallbackController;
 use App\Http\Controllers\Callbacks\PotenzialCallbackController;
+use App\Http\Controllers\WorkflowSettings\PotenzialSettingController;
 
 
 Route::get('/', function () {
@@ -32,6 +33,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/potenzial/create', [PotenzialController::class, 'create'])->name('potenzial.create');
     Route::post('/potenzial', [PotenzialController::class, 'store'])->name('potenzial.store');
     Route::get('/potenzial', [PotenzialController::class, 'index'])->name('potenzial.index');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/potenzial/settings', [PotenzialSettingController::class, 'edit'])->name('potenzial.settings.edit');
+    Route::put('/potenzial/settings', [PotenzialSettingController::class, 'update'])->name('potenzial.settings.update');
 });
 
 require __DIR__.'/auth.php';

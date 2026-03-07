@@ -13,13 +13,13 @@ class SeoAuditController extends Controller
     public function create()
     {
         $recent = Audit::where('user_id', auth()->id())->latest()->take(5)->get();
-        return view('agent.index', compact('recent'));
+        return view('seo-audits.create', compact('recent'));
     }
 
     public function index()
     {
         $audits = Audit::where('user_id', auth()->id())->latest()->paginate(15);
-        return view('audits.index', compact('audits'));
+        return view('seo-audits.view', compact('audits'));
     }
 
     public function store(Request $request, SeoAuditWorkflow $workflow)

@@ -18,12 +18,12 @@ class PotenzialController extends Controller
             ->latest()
             ->paginate(15);
 
-        return view('potenzial.view', compact('potenzials'));
+        return view('potenzialanalyses.view', compact('potenzials'));
     }
 
     public function create()
     {
-        return view('potenzial.create', [
+        return view('potenzialanalyses.create', [
             'locations' => Location::orderBy('location_name')->get(),
             'languages' => Language::orderBy('language_name')->get(),
         ]);
