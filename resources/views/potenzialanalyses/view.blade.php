@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout.default>
     <div class="max-w-5xl mx-auto p-6 space-y-4">
 
         @if (session('success'))
@@ -61,4 +61,4 @@
 
         {{ $potenzials->links() }}
     </div>
-</x-app-layout>
+</x-layout.default>

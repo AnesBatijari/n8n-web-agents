@@ -2,28 +2,40 @@
 
 return [
 
-    // Navigation
-    'dashboard'   => 'Dashboard',
-    'seo_audits'  => 'SEO Audits',
-    'potenzial'   => 'Potenzial',
-
-    // Actions
-    'create'      => 'Erstellen',
-    'view'        => 'Anzeigen',
-    'edit'        => 'Bearbeiten',
-    'delete'      => 'Löschen',
-
-    // Profile
-    'profile'     => 'Profil',
-    'logout'      => 'Abmelden',
-    'manage_account' => 'Konto verwalten',
-
-    // Audit
-    'client_name' => 'Kundenname',
-    'website_url' => 'Webseiten-URL',
-    'generate_audit' => 'Audit erstellen',
-    'recent_audits'  => 'Letzte Audits',
-    'status'         => 'Status',
-    'created_at'     => 'Erstellt am',
+    'Sign in' => 'Anmelden',
+    'Enter your email and password to login' => 'Geben Sie Ihre E-Mail und Ihr Passwort ein, um sich anzumelden',
+    'Email' => 'E-Mail',
+    'Enter Email' => 'E-Mail eingeben',
+    'Password' => 'Passwort',
+    'Enter Password' => 'Passwort eingeben',
+    'Remember me' => 'Angemeldet bleiben',
+    'Forgot your password?' => 'Passwort vergessen?',
+    'Log in' => 'Einloggen',
+    'Don\'t have an account?' => 'Noch kein Konto?',
+    'Sign up' => 'Registrieren',
+    'Already have an account?' => 'Bereits ein Konto?',
+    'Name' => 'Name',
+    'Enter Name' => 'Name eingeben',
+    'Confirm Password' => 'Passwort bestätigen',
+    'Enter Confirm Password' => 'Bestätigen Sie das Passwort eingeben',
+    'Enter your email and password to register' => 'Geben Sie Ihre E-Mail und Ihr Passwort ein, um sich zu registrieren',
+    'Register' => 'Registrieren',
+    'All Rights Reserved.' => 'Alle Rechte vorbehalten.',
+    'SEO Audit' => 'SEO Audit',
+    'View Audits' => 'Audits anzeigen',
+    'Client Name' => 'Kundenname',
+    'Enter Client Name' => 'Kundenname eingeben',
+    'Client\'s Website' => 'Webseite des Kunden',
+    'Enter Client\'s Website URL' => 'Webseiten-URL des Kunden eingeben',
+    'Generate Audit' => 'Audit erstellen',
+    'Created at' => 'Erstellt am',
+    'Status' => 'Status',
+    'Preview' => 'Vorschau',
+    'Client' => 'Kunde',
+    'Website URL' => 'Webseiten-URL',
+    'Audit' => 'Audit',
+    'SEO Audits' => 'SEO Audits',
+    'Create Audits' => 'Audits erstellen',
+    'Search Audit' => 'Audit suchen',
 
 ];

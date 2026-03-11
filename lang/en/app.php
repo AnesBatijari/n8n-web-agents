@@ -26,4 +26,17 @@ return [
     'status'         => 'Status',
     'created_at'     => 'Created At',
 
+    // Auth & Forms
+    'Sign in' => 'Sign in',
+    'Enter your email and password to login' => 'Enter your email and password to login',
+    'Email' => 'Email',
+    'Enter Email' => 'Enter Email',
+    'Password' => 'Password',
+    'Enter Password' => 'Enter Password',
+    'Remember me' => 'Remember me',
+    'Forgot your password?' => 'Forgot your password?',
+    'Log in' => 'Log in',
+    'Don\'t have an account?' => "Don't have an account?",
+    'SIGN UP' => 'SIGN UP',
+
 ];

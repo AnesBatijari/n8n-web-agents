@@ -32,7 +32,9 @@ class PotenzialWorkflow
         }
 
         $jobId = $potenzial->job_id ?: (string) Str::uuid();
-        $webhookUrl = trim($settings->n8n_webhook_url);
+        // $webhookUrl = trim($settings->n8n_webhook_url);
+
+        $webhookUrl = rtrim(config('n8n.base_url'), '/') . '/webhook/potenzial';
 
         $potenzial->update([
             'job_id' => $jobId,

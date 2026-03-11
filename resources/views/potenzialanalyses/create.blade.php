@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout.default>
     <div class="max-w-3xl mx-auto p-6">
         <h1 class="text-2xl font-semibold mb-6">Create Potenzial Workflow</h1>
 
@@ -71,7 +71,7 @@
             </div>
         </form>
     </div>
-</x-app-layout>
+</x-layout.default>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css">
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 <script>

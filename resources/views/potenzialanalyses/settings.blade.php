@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout.default>
     <div class="max-w-4xl">
         <h2 class="text-2xl font-semibold text-gray-900 mb-6">Potenzial Settings</h2>
 
@@ -61,4 +61,4 @@
             </div>
         </form>
     </div>
-</x-app-layout>
+</x-layout.default>

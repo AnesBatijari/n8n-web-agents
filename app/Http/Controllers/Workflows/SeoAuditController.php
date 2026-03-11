@@ -13,13 +13,13 @@ class SeoAuditController extends Controller
     public function create()
     {
         $recent = Audit::where('user_id', auth()->id())->latest()->take(5)->get();
+
         return view('seo-audits.create', compact('recent'));
     }
 
     public function index()
     {
-        $audits = Audit::where('user_id', auth()->id())->latest()->paginate(15);
-        return view('seo-audits.view', compact('audits'));
+        return view('seo-audits.view');
     }
 
     public function store(Request $request, SeoAuditWorkflow $workflow)
@@ -47,7 +47,7 @@ class SeoAuditController extends Controller
                 'error_message' => $e->getMessage(),
             ]);
 
-            return back()->with('error', 'Failed to start workflow: ' . $e->getMessage());
+            return back()->with('error', 'Failed to start workflow: '.$e->getMessage());
         }
 
         return redirect()->route('seo.index')
