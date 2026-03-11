@@ -37,5 +37,5 @@ return [
     'SEO Audits' => 'SEO Audits',
     'Create Audits' => 'Audits erstellen',
     'Search Audit' => 'Audit suchen',
-
+    'Search Audits' => 'Audits suchen',
 ];
