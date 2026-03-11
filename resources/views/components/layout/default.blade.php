@@ -121,6 +121,6 @@
     <script src="/assets/js/custom.js"></script>
 
     {{-- Livewire 4 manual bundle config --}}
-    @livewireScriptConfig
+    @livewireScripts
 </body>
 </html>
